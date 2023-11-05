@@ -1,0 +1,44 @@
+{"level":"info","ts":"2023-11-03T09:41:20.313+0400","caller":"api/server.go:62","msg":"started POST /registration \t remote_addr=127.0.0.1:58375 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T09:41:20.313+0400","caller":"api/server.go:66","msg":"completed with 200 OK in 417ns \t remote_addr=127.0.0.1:58375 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T09:50:29.927+0400","caller":"api/server.go:62","msg":"started POST /registration \t remote_addr=127.0.0.1:58543 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T09:50:29.928+0400","caller":"api/server.go:66","msg":"completed with 200 OK in 500ns \t remote_addr=127.0.0.1:58543 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T09:55:35.649+0400","caller":"api/server.go:62","msg":"started POST /registration \t remote_addr=127.0.0.1:58607 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T09:55:35.650+0400","caller":"api/server.go:66","msg":"completed with 200 OK in 417ns \t remote_addr=127.0.0.1:58607 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T13:06:35.284+0400","caller":"api/server.go:63","msg":"started POST /registration \t remote_addr=127.0.0.1:59286 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T13:06:35.284+0400","caller":"api/server.go:67","msg":"completed with 200 OK in 500ns \t remote_addr=127.0.0.1:59286 request_id=%!s(<nil>)"}
+{"level":"info","ts":"2023-11-03T13:08:47.275+0400","caller":"api/server.go:62","msg":"started POST /registration \t remote_addr=127.0.0.1:59302 request_id=1b948fb6-af1d-4e45-99b5-8030086d9ce8"}
+{"level":"info","ts":"2023-11-03T13:08:47.276+0400","caller":"api/server.go:66","msg":"completed with 200 OK in 417ns \t remote_addr=127.0.0.1:59302 request_id=1b948fb6-af1d-4e45-99b5-8030086d9ce8"}
+{"level":"info","ts":"2023-11-03T13:40:53.381+0400","caller":"api/server.go:63","msg":"started POST /login \t remote_addr=127.0.0.1:59569 request_id=215d0af1-91c0-4835-a101-8f307bd69765"}
+{"level":"info","ts":"2023-11-03T13:40:53.381+0400","caller":"api/server.go:67","msg":"completed with 200 OK in 458ns \t remote_addr=127.0.0.1:59569 request_id=215d0af1-91c0-4835-a101-8f307bd69765"}
+{"level":"info","ts":"2023-11-03T13:46:51.700+0400","caller":"api/server.go:63","msg":"started POST /login \t remote_addr=127.0.0.1:59658 request_id=b5746d2e-8f4d-47eb-8303-7649fedb8c60"}
+{"level":"info","ts":"2023-11-03T13:46:51.701+0400","caller":"api/server.go:67","msg":"completed with 200 OK in 625ns \t remote_addr=127.0.0.1:59658 request_id=b5746d2e-8f4d-47eb-8303-7649fedb8c60"}
+{"level":"info","ts":"2023-11-03T14:04:44.086+0400","caller":"api/middleware.go:25","msg":"started POST /login \t remote_addr=127.0.0.1:59779 request_id=06a7020b-d18f-4514-a327-4e3ae760c099"}
+{"level":"info","ts":"2023-11-03T14:04:44.086+0400","caller":"api/middleware.go:29","msg":"completed with 200 OK in 458ns \t remote_addr=127.0.0.1:59779 request_id=06a7020b-d18f-4514-a327-4e3ae760c099"}
+{"level":"info","ts":"2023-11-03T14:29:50.308+0400","caller":"api/middleware.go:26","msg":"started GET /login \t remote_addr=127.0.0.1:60056 request_id=5009a407-34da-4113-b8fc-8ae5474ff1e5"}
+{"level":"info","ts":"2023-11-03T14:29:50.309+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 625ns \t remote_addr=127.0.0.1:60056 request_id=5009a407-34da-4113-b8fc-8ae5474ff1e5"}
+{"level":"info","ts":"2023-11-03T14:29:58.191+0400","caller":"api/middleware.go:26","msg":"started POST /login \t remote_addr=127.0.0.1:60056 request_id=4e553fe4-7179-4480-bd89-71962c66a380"}
+{"level":"info","ts":"2023-11-03T14:29:58.191+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 542ns \t remote_addr=127.0.0.1:60056 request_id=4e553fe4-7179-4480-bd89-71962c66a380"}
+{"level":"info","ts":"2023-11-03T14:30:21.082+0400","caller":"api/middleware.go:26","msg":"started GET /private/whoami \t remote_addr=127.0.0.1:60056 request_id=3fc43ae4-603c-4261-b44c-812a75a31cd7"}
+{"level":"info","ts":"2023-11-03T14:30:21.083+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 584ns \t remote_addr=127.0.0.1:60056 request_id=3fc43ae4-603c-4261-b44c-812a75a31cd7"}
+{"level":"info","ts":"2023-11-03T14:30:42.872+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60056 request_id=37816aa3-36aa-4ec7-ab47-6ca3e386917a"}
+{"level":"info","ts":"2023-11-03T14:30:42.873+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 500ns \t remote_addr=127.0.0.1:60056 request_id=37816aa3-36aa-4ec7-ab47-6ca3e386917a"}
+{"level":"info","ts":"2023-11-03T14:30:48.796+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60056 request_id=662ea4e6-ea7a-4850-817b-47fe24d77ce9"}
+{"level":"info","ts":"2023-11-03T14:30:48.796+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 542ns \t remote_addr=127.0.0.1:60056 request_id=662ea4e6-ea7a-4850-817b-47fe24d77ce9"}
+{"level":"info","ts":"2023-11-03T14:30:56.860+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60056 request_id=c9e56280-f795-4a8a-b42a-89531b90476b"}
+{"level":"info","ts":"2023-11-03T14:30:56.860+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 541ns \t remote_addr=127.0.0.1:60056 request_id=c9e56280-f795-4a8a-b42a-89531b90476b"}
+{"level":"info","ts":"2023-11-03T14:30:57.640+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60056 request_id=02e073bc-d67a-4e85-85bc-29ddee7ac849"}
+{"level":"info","ts":"2023-11-03T14:30:57.640+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 500ns \t remote_addr=127.0.0.1:60056 request_id=02e073bc-d67a-4e85-85bc-29ddee7ac849"}
+{"level":"info","ts":"2023-11-03T14:30:58.173+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60056 request_id=68e1b506-60cd-4db9-9158-a81daafc85fc"}
+{"level":"info","ts":"2023-11-03T14:30:58.173+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 542ns \t remote_addr=127.0.0.1:60056 request_id=68e1b506-60cd-4db9-9158-a81daafc85fc"}
+{"level":"info","ts":"2023-11-03T14:30:58.599+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60056 request_id=513add2f-13c8-43c3-819b-5f607eefda2e"}
+{"level":"info","ts":"2023-11-03T14:30:58.599+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 417ns \t remote_addr=127.0.0.1:60056 request_id=513add2f-13c8-43c3-819b-5f607eefda2e"}
+{"level":"info","ts":"2023-11-03T14:32:50.910+0400","caller":"api/middleware.go:26","msg":"started POST /login \t remote_addr=127.0.0.1:60056 request_id=9224deb6-210d-422b-9ba2-f270a75b14a4"}
+{"level":"info","ts":"2023-11-03T14:32:50.911+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 666ns \t remote_addr=127.0.0.1:60056 request_id=9224deb6-210d-422b-9ba2-f270a75b14a4"}
+{"level":"info","ts":"2023-11-03T14:33:07.624+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60056 request_id=c607b163-e8a7-4d52-ad8d-b502d0dede36"}
+{"level":"info","ts":"2023-11-03T14:33:07.624+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 709ns \t remote_addr=127.0.0.1:60056 request_id=c607b163-e8a7-4d52-ad8d-b502d0dede36"}
+{"level":"info","ts":"2023-11-03T14:33:45.713+0400","caller":"api/middleware.go:26","msg":"started POST /login \t remote_addr=127.0.0.1:60105 request_id=67c8ab0f-070a-4403-a8ba-9da09a704ca5"}
+{"level":"info","ts":"2023-11-03T14:33:45.714+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 417ns \t remote_addr=127.0.0.1:60105 request_id=67c8ab0f-070a-4403-a8ba-9da09a704ca5"}
+{"level":"info","ts":"2023-11-03T14:33:56.820+0400","caller":"api/middleware.go:26","msg":"started POST /auth/whoami \t remote_addr=127.0.0.1:60105 request_id=16457882-6959-4d98-ac57-6ed4ed7c4a61"}
+{"level":"info","ts":"2023-11-03T14:33:56.820+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 667ns \t remote_addr=127.0.0.1:60105 request_id=16457882-6959-4d98-ac57-6ed4ed7c4a61"}
+{"level":"info","ts":"2023-11-03T14:34:07.151+0400","caller":"api/middleware.go:26","msg":"started GET /auth/whoami \t remote_addr=127.0.0.1:60105 request_id=e883c64f-4b61-4a0e-82e5-57a70cd3d57e"}
+{"level":"info","ts":"2023-11-03T14:34:07.151+0400","caller":"api/middleware.go:30","msg":"completed with 200 OK in 500ns \t remote_addr=127.0.0.1:60105 request_id=e883c64f-4b61-4a0e-82e5-57a70cd3d57e"}

@@ -27,12 +27,12 @@ func (s *server) logRequest(c *fiber.Ctx) error {
 
 	start := time.Now()
 
-	logger.Info(fmt.Sprintf("completed with %d % s in %v \t %s",
+	msg = fmt.Sprintf("completed with %d % s in %v \t %s",
 		http.StatusOK,
 		http.StatusText(http.StatusOK),
 		time.Since(start),
-		msg),
-	)
+		msg)
+	logger.Info(msg)
 	return c.Next()
 }
 
@@ -54,5 +54,6 @@ func (s *server) authUser(c *fiber.Ctx) error {
 		return err
 	}
 	c.Context().SetUserValue(ctxKeyUser, u)
+	c.Context().SetUserValue(ctxKeyUserID, u.ID)
 	return c.Next()
 }

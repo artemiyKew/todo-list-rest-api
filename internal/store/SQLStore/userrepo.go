@@ -11,7 +11,7 @@ type UserRepository struct {
 	store *Store
 }
 
-func (r *UserRepository) Create(u *model.User) error {
+func (r *UserRepository) Create(u model.User) error {
 	if err := u.Validate(); err != nil {
 		return err
 	}
@@ -19,6 +19,7 @@ func (r *UserRepository) Create(u *model.User) error {
 	if err := u.BeforeCreate(); err != nil {
 		return err
 	}
+
 	return r.store.db.
 		QueryRow(
 			"INSERT INTO users (email, encrypted_password) VALUES ($1, $2) RETURNING id",
@@ -37,6 +38,7 @@ func (r *UserRepository) FindByID(id int) (*model.User, error) {
 		}
 		return nil, err
 	}
+
 	return u, nil
 }
 
@@ -47,5 +49,6 @@ func (r *UserRepository) FindByEmail(email string) (*model.User, error) {
 		Scan(&u.ID, &u.Email, &u.EncryptedPassword); err != nil {
 		return nil, err
 	}
+
 	return u, nil
 }

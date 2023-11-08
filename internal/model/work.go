@@ -22,6 +22,7 @@ func (w *Work) BeforeCreate() error {
 	} else {
 		return errors.New("len name equal 0, add name")
 	}
+
 	return nil
 }
 

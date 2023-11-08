@@ -10,10 +10,11 @@ type WorkRepository struct {
 	store *Store
 }
 
-func (r *WorkRepository) Create(w *model.Work) error {
+func (r *WorkRepository) Create(w model.Work) error {
 	if err := w.BeforeCreate(); err != nil {
 		return err
 	}
+
 	return r.store.
 		db.
 		QueryRow("INSERT INTO works (user_id, name, description, created_at, expired_at) VALUES ($1, $2, $3, $4, $5) RETURNING id",
@@ -27,8 +28,8 @@ func (r *WorkRepository) Get(userid int) ([]*model.Work, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 
+	defer rows.Close()
 	for rows.Next() {
 		work := &model.Work{}
 		if err := rows.
@@ -38,13 +39,15 @@ func (r *WorkRepository) Get(userid int) ([]*model.Work, error) {
 		}
 		w = append(w, work)
 	}
+
 	return w, nil
 }
 
-func (r *WorkRepository) Update(w *model.Work, work_id int) error {
+func (r *WorkRepository) Update(w model.Work, work_id int) error {
 	if w.IsEmpty() {
 		return errors.New("empty data")
 	}
+
 	if work_id < 0 {
 		return errors.New("out of range")
 	}
@@ -54,6 +57,7 @@ func (r *WorkRepository) Update(w *model.Work, work_id int) error {
 			w.Name, w.Description, work_id, w.User_ID).Err(); err != nil {
 		return err
 	}
+
 	return nil
 }
 

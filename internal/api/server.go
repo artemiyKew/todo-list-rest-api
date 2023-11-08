@@ -36,7 +36,6 @@ func newServer(store store.Store) *server {
 	}
 
 	s.configureRouter()
-
 	return s
 }
 
@@ -52,11 +51,10 @@ func (s *server) configureRouter() {
 	private.Get("/whoami", s.whoami)
 
 	private.Post("/work", s.createWork)
-	private.Put("work/:id", s.updateWorkData)
+	private.Put("work/:id", s.updateWork)
 	private.Delete("work/:id", s.deleteWork)
 
 	private.Get("/works", s.getWorks)
-
 }
 
 func (s *server) createUser(c *fiber.Ctx) error {
@@ -64,22 +62,24 @@ func (s *server) createUser(c *fiber.Ctx) error {
 		Email    string `json:"email"`
 		Password string `json:"password"`
 	}
-	req := &request{}
 
+	req := &request{}
 	if err := c.BodyParser(req); err != nil {
 		s.error(c, http.StatusBadRequest, err)
 		return err
 	}
+
 	u := &model.User{
 		Email:    req.Email,
 		Password: req.Password,
 	}
-	if err := s.store.User().Create(u); err != nil {
+
+	if err := s.store.User().Create(*u); err != nil {
 		s.error(c, http.StatusUnprocessableEntity, err)
 		return err
 	}
-	u.Sanitize()
 
+	u.Sanitize()
 	return s.respond(c, http.StatusCreated, u)
 }
 
@@ -88,6 +88,7 @@ func (s *server) loginUser(c *fiber.Ctx) error {
 		Email    string `json:"email"`
 		Password string `json:"password"`
 	}
+
 	req := &request{}
 	if err := c.BodyParser(&req); err != nil {
 		s.error(c, http.StatusBadRequest, err)
@@ -128,10 +129,10 @@ func (s *server) createWork(c *fiber.Ctx) error {
 	w := &model.Work{
 		Name:        req.Name,
 		Description: req.Description,
-		User_ID:     c.UserContext().Value(ctxKeyUserID).(int),
+		User_ID:     s.getUserID(c),
 	}
 
-	if err := s.store.Work().Create(w); err != nil {
+	if err := s.store.Work().Create(*w); err != nil {
 		s.error(c, http.StatusInternalServerError, err)
 		return err
 	}
@@ -140,24 +141,27 @@ func (s *server) createWork(c *fiber.Ctx) error {
 }
 
 func (s *server) getWorks(c *fiber.Ctx) error {
-	w, err := s.store.Work().Get(c.UserContext().Value(ctxKeyUserID).(int))
+	w, err := s.store.Work().Get(s.getUserID(c))
 	if err != nil {
 		s.error(c, http.StatusInternalServerError, err)
 		return err
 	}
+
 	return s.respond(c, http.StatusOK, w)
 }
 
-func (s *server) updateWorkData(c *fiber.Ctx) error {
+func (s *server) updateWork(c *fiber.Ctx) error {
 	type request struct {
 		Name        string `json:"name"`
 		Description string `json:"description"`
 	}
+
 	req := &request{}
 	if err := c.BodyParser(req); err != nil {
 		s.error(c, http.StatusBadRequest, err)
 		return err
 	}
+
 	id, err := strconv.Atoi(c.Params("id"))
 	if err != nil {
 		s.error(c, http.StatusBadRequest, err)
@@ -167,10 +171,10 @@ func (s *server) updateWorkData(c *fiber.Ctx) error {
 	w := &model.Work{
 		Name:        req.Name,
 		Description: req.Description,
-		User_ID:     c.UserContext().Value(ctxKeyUserID).(int),
+		User_ID:     s.getUserID(c),
 	}
 
-	if err := s.store.Work().Update(w, id); err != nil {
+	if err := s.store.Work().Update(*w, id); err != nil {
 		s.error(c, http.StatusInternalServerError, err)
 		return err
 	}
@@ -184,11 +188,13 @@ func (s *server) deleteWork(c *fiber.Ctx) error {
 		s.error(c, http.StatusBadRequest, err)
 		return err
 	}
-	user_id := c.UserContext().Value(ctxKeyUserID).(int)
+
+	user_id := s.getUserID(c)
 	if err := s.store.Work().Delete(id, user_id); err != nil {
 		s.error(c, http.StatusInternalServerError, err)
 		return err
 	}
+
 	return s.respond(c, http.StatusOK, nil)
 }
 
@@ -203,5 +209,6 @@ func (s *server) respond(c *fiber.Ctx, code int, data interface{}) error {
 	if data != nil {
 		_ = json.NewEncoder(c.Response().BodyWriter()).Encode(data)
 	}
+
 	return nil
 }

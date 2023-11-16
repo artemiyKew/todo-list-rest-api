@@ -10,6 +10,7 @@ type UserRepository interface {
 
 type WorkRepository interface {
 	Create(*model.Work) error
-	Delete(int) error
-	Change(*model.Work) error
+	Get(int) ([]*model.Work, error)
+	Delete(int, int) error
+	Update(*model.Work, int) error
 }

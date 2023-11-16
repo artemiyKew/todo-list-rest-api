@@ -1,12 +1,12 @@
 .PHONY: build
 
 build: 
-	go build -v ./cmd/apiserver
+	go build -v ./cmd/app
 
 .PHONY: test
 
 run: build
-	./apiserver
+	./app
 
 test: 
 	go test -v -race -timeout 30s ./...

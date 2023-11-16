@@ -20,19 +20,15 @@ func (s *server) setRequestID(c *fiber.Ctx) error {
 
 func (s *server) logRequest(c *fiber.Ctx) error {
 	logger := s.logger
-
 	msg := fmt.Sprintf("remote_addr=%s request_id=%s", c.Context().RemoteAddr(), c.UserContext().Value(ctxKeyRequestID))
-
 	logger.Info(fmt.Sprintf("started %s %s \t %s", c.Context().Method(), c.Context().RequestURI(), msg))
-
 	start := time.Now()
-
-	logger.Info(fmt.Sprintf("completed with %d % s in %v \t %s",
+	msg = fmt.Sprintf("completed with %d % s in %v \t %s",
 		http.StatusOK,
 		http.StatusText(http.StatusOK),
 		time.Since(start),
-		msg),
-	)
+		msg)
+	logger.Info(msg)
 	return c.Next()
 }
 
@@ -54,5 +50,11 @@ func (s *server) authUser(c *fiber.Ctx) error {
 		return err
 	}
 	c.Context().SetUserValue(ctxKeyUser, u)
+	c.Context().SetUserValue(ctxKeyUserID, u.ID)
 	return c.Next()
+}
+
+func (s *server) getUserID(c *fiber.Ctx) int {
+	userID := c.UserContext().Value(ctxKeyUserID).(int)
+	return userID
 }

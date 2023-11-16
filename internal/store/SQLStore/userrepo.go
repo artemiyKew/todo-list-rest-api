@@ -11,7 +11,7 @@ type UserRepository struct {
 	store *Store
 }
 
-func (r *UserRepository) Create(u model.User) error {
+func (r *UserRepository) Create(u *model.User) error {
 	if err := u.Validate(); err != nil {
 		return err
 	}
@@ -20,6 +20,7 @@ func (r *UserRepository) Create(u model.User) error {
 		return err
 	}
 
+	u.Sanitize()
 	return r.store.db.
 		QueryRow(
 			"INSERT INTO users (email, encrypted_password) VALUES ($1, $2) RETURNING id",

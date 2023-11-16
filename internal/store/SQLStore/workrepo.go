@@ -10,7 +10,7 @@ type WorkRepository struct {
 	store *Store
 }
 
-func (r *WorkRepository) Create(w model.Work) error {
+func (r *WorkRepository) Create(w *model.Work) error {
 	if err := w.BeforeCreate(); err != nil {
 		return err
 	}
@@ -43,7 +43,7 @@ func (r *WorkRepository) Get(userid int) ([]*model.Work, error) {
 	return w, nil
 }
 
-func (r *WorkRepository) Update(w model.Work, work_id int) error {
+func (r *WorkRepository) Update(w *model.Work, work_id int) error {
 	if w.IsEmpty() {
 		return errors.New("empty data")
 	}

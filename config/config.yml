@@ -1,0 +1,2 @@
+bind_addr: ":1234"
+db_url: "host=postgres port=5432 user=postgres password=password dbname=todolist_dev sslmode=disable"

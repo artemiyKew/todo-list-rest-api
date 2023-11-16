@@ -5,25 +5,33 @@ import (
 	"os"
 
 	sqlstore "github.com/artemiyKew/todo-list-rest-api/internal/store/SQLStore"
+	"github.com/sirupsen/logrus"
 	"github.com/valyala/fasthttp"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
 
 func Start(config *Config) error {
+	logrus.Info("Initializing postgres...")
 	db, err := newDB(config.DataBaseURL)
 	if err != nil {
 		return err
 	}
 	defer db.Close()
 	store := sqlstore.New(db)
+
+	logrus.Info("Initializing server...")
 	srv := newServer(store)
+	logrus.Info("Initializing zap logger...")
 	logger, err := configureLogger()
 	if err != nil {
 		return err
 	}
 	srv.logger = logger
 
+	// HTTP server
+	logrus.Info("Starting http server...")
+	logrus.Infof("Server port: %s", config.BindAddr)
 	return fasthttp.ListenAndServe(config.BindAddr, srv.router.Handler())
 }
 

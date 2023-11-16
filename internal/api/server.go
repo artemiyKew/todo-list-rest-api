@@ -74,12 +74,11 @@ func (s *server) createUser(c *fiber.Ctx) error {
 		Password: req.Password,
 	}
 
-	if err := s.store.User().Create(*u); err != nil {
+	if err := s.store.User().Create(u); err != nil {
 		s.error(c, http.StatusUnprocessableEntity, err)
 		return err
 	}
 
-	u.Sanitize()
 	return s.respond(c, http.StatusCreated, u)
 }
 
@@ -120,6 +119,7 @@ func (s *server) createWork(c *fiber.Ctx) error {
 		Name        string `json:"name"`
 		Description string `json:"description"`
 	}
+
 	req := &request{}
 	if err := c.BodyParser(req); err != nil {
 		s.error(c, http.StatusBadRequest, err)
@@ -132,7 +132,7 @@ func (s *server) createWork(c *fiber.Ctx) error {
 		User_ID:     s.getUserID(c),
 	}
 
-	if err := s.store.Work().Create(*w); err != nil {
+	if err := s.store.Work().Create(w); err != nil {
 		s.error(c, http.StatusInternalServerError, err)
 		return err
 	}
@@ -174,7 +174,7 @@ func (s *server) updateWork(c *fiber.Ctx) error {
 		User_ID:     s.getUserID(c),
 	}
 
-	if err := s.store.Work().Update(*w, id); err != nil {
+	if err := s.store.Work().Update(w, id); err != nil {
 		s.error(c, http.StatusInternalServerError, err)
 		return err
 	}

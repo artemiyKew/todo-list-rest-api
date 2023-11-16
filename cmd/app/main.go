@@ -16,7 +16,7 @@ var (
 )
 
 func init() {
-	flag.StringVar(&configPath, "config-path", "configs/config.yml", "path to config file")
+	flag.StringVar(&configPath, "config-path", "config/config.yml", "path to config file")
 	flag.Parse()
 
 	data, err := os.ReadFile(configPath)
@@ -27,13 +27,12 @@ func init() {
 }
 
 func main() {
-
 	cfg := api.NewConfig()
 	err := yaml.Unmarshal(config, &cfg)
-
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	if err := api.Start(cfg); err != nil {
 		log.Fatal(err)
 	}

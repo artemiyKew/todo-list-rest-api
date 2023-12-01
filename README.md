@@ -14,17 +14,17 @@ todo list api
 
 **Скопируйте проект**
 ```bash
-  git clone https://github.com/artemiyKew/todo-list-rest-api.git
+git clone https://github.com/artemiyKew/todo-list-rest-api.git
 ```
 
 **Перейдите в каталог проекта**
 ```bash
-  cd todo-list-rest-api
+cd todo-list-rest-api
 ```
 
 **Запустите сервер**
 ```bash
-  make compose
+make compose
 ```
 
 ## Examples
@@ -40,30 +40,30 @@ todo list api
 Регистрация пользователя: 
 
 ```bash
-    curl -X POST http://localhost:1234/sign-up
-        -H "Content-Type: application/json" \
-        -d '{
-            "email": "test@example.com", 
-            "password": "password"
-        }'
+curl -X POST http://localhost:1234/sign-up
+  -H "Content-Type: application/json" \
+  -d '{
+        "email": "test@example.com", 
+        "password": "password"
+      }'
 ```
 Пример ответа: 
 ```json
 {
-    "id":1,
-    "email":"test@example.com"
+  "id":1,
+  "email":"test@example.com"
 }
 ```
 
 ## Аутентификация
 Аутентификация пользователя:
 ```bash
-    curl -X POST http://localhost:1234/sign-in
-        -H "Content-Type: application/json" \
-        -d '{
-            "email": "test@example.com", 
-            "password": "password"
-        }'
+curl -X POST http://localhost:1234/sign-in
+  -H "Content-Type: application/json" \
+  -d '{
+        "email": "test@example.com",
+        "password": "password"
+      }'
 ```
 
 Пример ответа: 
@@ -74,8 +74,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE1NDYzMDIsInN1YiI6MX0.YYByTZh
 Получение информации о текущем пользователе:
 
 ```bash
-    curl -X http://localhost:1234/auth/whoami \
-        -H "Token: <your_jwt_token> "
+curl -X http://localhost:1234/auth/whoami \
+  -H "Token: <your_jwt_token> "
 ```
 Пример ответа: 
 ```json
@@ -88,13 +88,13 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE1NDYzMDIsInN1YiI6MX0.YYByTZh
 ## Создание работы
 Создание работы пользователя(достпуно только авторизированным пользователям):
 ```bash
-    curl -X POST  http://localhost:1234/auth/work \
-        -H "Content-Type: application/json" \
-        -H "Token: <your_jwt_token> \
-        -d '{
-            "name": "Task 1", 
-            "description": "Description for Task 1"
-        }' 
+curl -X POST  http://localhost:1234/auth/work \
+  -H "Content-Type: application/json" \
+  -H "Token: <your_jwt_token> \
+  -d '{
+        "name": "Task 1",
+        "description": "Description for Task 1"
+      }' 
 ```
 
 Пример ответа: 
@@ -112,8 +112,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE1NDYzMDIsInN1YiI6MX0.YYByTZh
 ## Получение списка работ
 Получение списка работ пользователя:
 ```bash
-    curl -X http://localhost:1234/auth/works \
-        -H "Token:<your_jwt_token>"
+curl -X http://localhost:1234/auth/works \
+  -H "Token:<your_jwt_token>"
 ```
 Пример ответа: 
 ```json
@@ -142,13 +142,13 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE1NDYzMDIsInN1YiI6MX0.YYByTZh
 ## Обновление работы
 Обновление работы пользователя:
 ```bash
-    curl -X PUT http://localhost:1234/auth/work/{work_id} \
-        -H "Content-Type: application/json" \
-        -H "Token:<your_jwt_token>" \
-        -d '{
-            "name": "Updated Task", 
-            "description": "Updated Description"
-        }'
+curl -X PUT http://localhost:1234/auth/work/{work_id} \
+  -H "Content-Type: application/json" \
+  -H "Token:<your_jwt_token>" \
+  -d '{
+        "name": "Updated Task", 
+        "description": "Updated Description"
+      }'
 ```
 Пример ответа: 
 ```json
@@ -165,8 +165,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE1NDYzMDIsInN1YiI6MX0.YYByTZh
 ## Удаление работы
 Удаление работы пользователя:
 ```bash
-    curl -X DELETE  http://localhost:1234/auth/work/{work_id} \
-        -H "Token:<your_jwt_token>"
+curl -X DELETE  http://localhost:1234/auth/work/{work_id} \
+  -H "Token:<your_jwt_token>"
 ```
 
 

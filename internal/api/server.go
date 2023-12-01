@@ -43,8 +43,8 @@ func (s *server) configureRouter() {
 	s.router.Use(s.setRequestID)
 	s.router.Use(s.logRequest)
 
-	s.router.Post("/registration", s.createUser)
-	s.router.Post("/login", s.loginUser)
+	s.router.Post("/sign-up", s.createUser)
+	s.router.Post("/sign-in", s.loginUser)
 
 	private := s.router.Group("/auth")
 	private.Use(s.authUser)
@@ -107,7 +107,7 @@ func (s *server) loginUser(c *fiber.Ctx) error {
 	}
 
 	c.Response().Header.Set("Token", token)
-	return s.respond(c, http.StatusAccepted, u)
+	return s.respond(c, http.StatusAccepted, token)
 }
 
 func (s *server) whoami(c *fiber.Ctx) error {
